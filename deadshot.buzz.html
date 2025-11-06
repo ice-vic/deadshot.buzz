@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play Deadshot online - Experience the ultimate multiplayer shooting game with stunning graphics and competitive gameplay. Free to play directly in your browser.">
+    <meta name="keywords" content="deadshot, deadshot game, deadshot io, online shooting game, multiplayer game, browser game">
+    <meta name="author" content="Deadshot Buzz">
+    <meta property="og:title" content="Deadshot Game Online - Play Free Now">
+    <meta property="og:description" content="Experience the ultimate multiplayer shooting game with stunning graphics and competitive gameplay.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://deadshot.buzz">
+    <title>Deadshot Game Online - Play Free Multiplayer Shooter</title>
+    <link rel="canonical" href="https://deadshot.buzz">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            color: #1d1d1f;
+        }
+
+        /* Glass morphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        .glass-dark {
+            background: rgba(29, 29, 31, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Apple-style gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        h1, h2 {
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Navigation */
+        nav {
+            transition: all 0.3s ease;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+            color: #667eea;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Cards */
+        .card {
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
+        }
+
+        /* Game iframe container */
+        .game-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-wrapper {
+            position: relative;
+            padding-bottom: 64.86%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .game-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fullscreen-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.05);
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            max-height: 500px;
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+        }
+
+        /* Game links */
+        .game-link {
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .game-link:hover {
+            transform: translateX(10px);
+        }
+
+        @media (max-width: 768px) {
+            .game-wrapper {
+                padding-bottom: 75%;
+            }
+
+            .fullscreen-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        /* Fullscreen mode */
+        .game-container:fullscreen {
+            max-width: 100%;
+            border-radius: 0;
+        }
+
+        .game-container:-webkit-full-screen {
+            max-width: 100%;
+            border-radius: 0;
+        }
+
+        .game-container:-moz-full-screen {
+            max-width: 100%;
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="glass sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold gradient-text">🎮 Deadshot</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#play" class="nav-link font-semibold text-gray-800">Play Now</a>
+                    <a href="#how-to-play" class="nav-link font-semibold text-gray-800">How to Play</a>
+                    <a href="#features" class="nav-link font-semibold text-gray-800">Features</a>
+                    <a href="#faq" class="nav-link font-semibold text-gray-800">FAQ</a>
+                    <a href="#more-games" class="nav-link font-semibold text-gray-800">More Games</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#play" class="block px-3 py-2 rounded-lg hover:bg-gray-100 font-semibold">Play Now</a>
+                    <a href="#how-to-play" class="block px-3 py-2 rounded-lg hover:bg-gray-100 font-semibold">How to Play</a>
+                    <a href="#features" class="block px-3 py-2 rounded-lg hover:bg-gray-100 font-semibold">Features</a>
+                    <a href="#faq" class="block px-3 py-2 rounded-lg hover:bg-gray-100 font-semibold">FAQ</a>
+                    <a href="#more-games" class="block px-3 py-2 rounded-lg hover:bg-gray-100 font-semibold">More Games</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="play" class="py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text">Deadshot Game Online</h1>
+            <p class="text-xl md:text-2xl text-white mb-12 drop-shadow-lg">Experience the ultimate multiplayer shooting action with intense battles and strategic gameplay</p>
+            
+            <!-- Game Container -->
+            <div id="game-container" class="game-container glass">
+                <div class="game-wrapper">
+                    <iframe 
+                        id="game-iframe"
+                        src="https://games.crazygames.com/en_US/deadshot-io/index.html"
+                        frameborder="0"
+                        allowfullscreen="true"
+                        title="CrazyGames - deadshot io"
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation allow-gamepad">
+                    </iframe>
+                </div>
+                <button id="fullscreen-btn" class="fullscreen-btn">⛶ Fullscreen</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play -->
+    <section id="how-to-play" class="py-16 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass rounded-3xl p-8 md:p-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text">How to Play Deadshot Game</h2>
+                <div class="space-y-6 text-gray-800 text-lg leading-relaxed">
+                    <p><strong class="text-purple-600">Movement:</strong> Use WASD or arrow keys to navigate your character across the battlefield. Master smooth movement to dodge enemy fire and position yourself strategically.</p>
+                    <p><strong class="text-purple-600">Aiming & Shooting:</strong> Use your mouse to aim precisely at opponents. Click to fire your weapon and eliminate enemies. Practice your aim to become a sharpshooter.</p>
+                    <p><strong class="text-purple-600">Strategy:</strong> Take cover behind obstacles, use terrain advantages, and coordinate with teammates to dominate the arena. Timing and positioning are crucial for victory.</p>
+                    <p><strong class="text-purple-600">Progression:</strong> Earn points by eliminating opponents and completing objectives. Unlock new weapons, skins, and abilities as you level up your character.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages -->
+    <section class="py-16 px-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-white drop-shadow-lg">Deadshot Game Advantages</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass rounded-3xl p-8 card">
+                    <div class="text-5xl mb-4">🚀</div>
+                    <h3 class="text-2xl font-bold mb-4 text-purple-700">Instant Play</h3>
+                    <p class="text-gray-700">No downloads or installations required. Jump straight into action directly from your browser on any device.</p>
+                </div>
+                <div class="glass rounded-3xl p-8 card">
+                    <div class="text-5xl mb-4">🎯</div>
+                    <h3 class="text-2xl font-bold mb-4 text-purple-700">Competitive Gameplay</h3>
+                    <p class="text-gray-700">Face players worldwide in intense multiplayer battles. Climb the leaderboards and prove your shooting skills.</p>
+                </div>
+                <div class="glass rounded-3xl p-8 card">
+                    <div class="text-5xl mb-4">🎨</div>
+                    <h3 class="text-2xl font-bold mb-4 text-purple-700">Stunning Graphics</h3>
+                    <p class="text-gray-700">Enjoy smooth animations, detailed environments, and visually impressive effects that enhance your gaming experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section id="features" class="py-16 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass rounded-3xl p-8 md:p-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text">Core Features of Deadshot</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="text-3xl">⚡</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700 mb-2">Fast-Paced Action</h3>
+                            <p class="text-gray-700">Experience adrenaline-pumping battles with quick respawns and non-stop action.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="text-3xl">🔫</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700 mb-2">Diverse Arsenal</h3>
+                            <p class="text-gray-700">Choose from multiple weapon types, each with unique characteristics and playstyles.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="text-3xl">🗺️</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700 mb-2">Multiple Maps</h3>
+                            <p class="text-gray-700">Battle across various environments, each offering unique tactical opportunities.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="text-3xl">👥</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700 mb-2">Team Modes</h3>
+                            <p class="text-gray-700">Join forces with friends or compete solo in different game modes.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="text-3xl">🏆</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700 mb-2">Ranking System</h3>
+                            <p class="text-gray-700">Track your progress and compete for top positions on global leaderboards.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="text-3xl">🎮</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700 mb-2">Smooth Controls</h3>
+                            <p class="text-gray-700">Responsive and intuitive controls ensure precision in every move and shot.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-16 px-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass rounded-3xl p-8 md:p-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text">How Deadshot Works</h2>
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl">1</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-700 mb-2">Quick Start</h3>
+                            <p class="text-gray-700 text-lg">Simply load the game in your browser - no registration or downloads needed. The game runs smoothly using WebGL technology for optimal performance.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl">2</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-700 mb-2">Real-Time Matchmaking</h3>
+                            <p class="text-gray-700 text-lg">The game automatically connects you with players of similar skill levels worldwide, ensuring balanced and competitive matches every time.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl">3</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-700 mb-2">Battle & Progress</h3>
+                            <p class="text-gray-700 text-lg">Engage in battles, earn experience points, and unlock new content. Your stats and progress are automatically saved for future sessions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-white drop-shadow-lg">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="glass rounded-2xl overflow-hidden faq-item">
+                    <div class="faq-question p-6 flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-purple-700">Is Deadshot free to play?</h3>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-700">Yes, Deadshot is completely free to play. You can enjoy all core gameplay features without any payment. Optional cosmetic items may be available for purchase.</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl overflow-hidden faq-item">
+                    <div class="faq-question p-6 flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-purple-700">What devices can I play on?</h3>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-700">Deadshot works on any device with a modern web browser - desktop computers, laptops, tablets, and smartphones. For the best experience, we recommend playing on PC with a mouse and keyboard.</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl overflow-hidden faq-item">
+                    <div class="faq-question p-6 flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-purple-700">Do I need to create an account?</h3>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-700">No account is required to start playing. However, creating an account allows you to save your progress, unlock achievements, and compete on leaderboards.</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl overflow-hidden faq-item">
+                    <div class="faq-question p-6 flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-purple-700">How do I improve my skills?</h3>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-700">Practice regularly, learn map layouts, experiment with different weapons, and watch how experienced players move and shoot. Focus on improving your aim and positioning.</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl overflow-hidden faq-item">
+                    <div class="faq-question p-6 flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-purple-700">Is there a mobile version?</h3>
+                        <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-answer px-6 pb-6">
+                        <p class="text-gray-700">Yes, Deadshot is optimized for mobile browsers with touch controls. The responsive design ensures smooth gameplay on smartphones and tablets.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Games -->
+    <section id="more-games" class="py-16 px-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass rounded-3xl p-8 md:p-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text">Explore More Games</h2>
+                <p class="text-gray-700 text-lg mb-8">Discover other exciting games you might enjoy:</p>
+                <div class="space-y-4">
+                    <a href="https://portalescape.click" class="game-link flex items-center space-x-4 p-4 rounded-xl hover:bg-purple-50 border-2 border-transparent hover:border-purple-300">
+                        <div class="text-3xl">🚪</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700">Portal Escape</h3>
+                            <p class="text-gray-600">Puzzle your way through challenging portal-based levels</p>
+                        </div>
+                    </a>
+                    <a href="https://boom.christmas" class="game-link flex items-center space-x-4 p-4 rounded-xl hover:bg-purple-50 border-2 border-transparent hover:border-purple-300">
+                        <div class="text-3xl">🎄</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700">Boom Christmas</h3>
+                            <p class="text-gray-600">Festive explosive action for the holiday season</p>
+                        </div>
+                    </a>
+                    <a href="https://frontwars.shop" class="game-link flex items-center space-x-4 p-4 rounded-xl hover:bg-purple-50 border-2 border-transparent hover:border-purple-300">
+                        <div class="text-3xl">⚔️</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700">Front Wars</h3>
+                            <p class="text-gray-600">Strategic warfare and tactical combat missions</p>
+                        </div>
+                    </a>
+                    <a href="https://bloxd.asia" class="game-link flex items-center space-x-4 p-4 rounded-xl hover:bg-purple-50 border-2 border-transparent hover:border-purple-300">
+                        <div class="text-3xl">🧱</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700">Bloxd</h3>
+                            <p class="text-gray-600">Creative building and exploration adventures</p>
+                        </div>
+                    </a>
+                    <a href="https://takeactions.click" class="game-link flex items-center space-x-4 p-4 rounded-xl hover:bg-purple-50 border-2 border-transparent hover:border-purple-300">
+                        <div class="text-3xl">🎬</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-700">Take Actions</h3>
+                            <p class="text-gray-600">Fast-paced action and strategic decision-making</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-dark py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-white mb-4">&copy; 2024 Deadshot.buzz - All rights reserved</p>
+            <p class="text-gray-300 text-sm">Experience the ultimate multiplayer shooting game online</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // FAQ toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('svg');
+            
+            answer.classList.toggle('active');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Fullscreen functionality
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        const gameContainer = document.getElementById('game-container');
+        
+        fullscreenBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement)
